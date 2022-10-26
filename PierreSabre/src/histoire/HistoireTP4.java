@@ -1,5 +1,7 @@
 package histoire;
 
+import personnages.*;
+
 public class HistoireTP4 {
 	
 	

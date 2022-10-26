@@ -1,4 +1,4 @@
-package histoire;
+package personnages;
 
 public class Humain {
 	private String nom;
