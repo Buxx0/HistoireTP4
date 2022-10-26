@@ -30,5 +30,7 @@ public class HistoireTP4 {
 		Ronin roro = new Ronin("Roro", "fanta", 60);
 		roro.direBonjour();
 		roro.donner(marco);
+		System.out.println("\nPARTIE 5:");
+		roro.provoquer(yaku);
 	}
 }
