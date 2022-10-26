@@ -6,7 +6,6 @@ public class Yakuza extends Humain {
 
 	public Yakuza(String nom, String boissonFavorite, int argent, String clan) {
 		super(nom, boissonFavorite, argent);
-		// TODO Auto-generated constructor stub
 		this.clan = clan;
 	}
 
