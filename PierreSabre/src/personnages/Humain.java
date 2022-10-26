@@ -4,55 +4,55 @@ public class Humain {
 	private String nom;
 	private String boissonFavorite;
 	private int argent;
-	
-	
+
 	public Humain(String nom, String boissonFavorite, int argent) {
 		this.nom = nom;
 		this.boissonFavorite = boissonFavorite;
 		this.argent = argent;
 	}
 
-
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
-
 
 	public int getArgent() {
-		return argent;
+		return this.argent;
 	}
-	
+
 	public void parler(String texte) {
-		System.out.println(getNom() + " - " + texte);
+		System.out.println(this.getNom() + " - " + texte);
 	}
-	
+
 	public void direBonjour() {
-		parler("Bonjour! Je m'appelle " + getNom() + " et j'aime boire du " + boissonFavorite);
+		this.parler("Bonjour! Je m'appelle " + this.getNom() + " et j'aime boire du " + this.boissonFavorite);
 	}
-	
-	
+
 	public void perdreArgent(int perte) {
-		argent -= perte;
-	}
-	
-	public void gagnerArgent(int gain) {
-		argent += gain;
-	}
-	
-	public void acheter(String bien, int prix) {
-		int argentTemp = getArgent();
-		if (argentTemp < prix) {
-			parler("J'ai " + argentTemp + " sous en poche. Je ne peux meme pas m'offrir un " 
-		+ bien + " a " + prix + " sous");
+		if (this.argent - perte >= 0) {
+			this.argent -= perte;
 		} else {
-			parler("J'ai " + argentTemp + " sous en poche. Je vais pouvoir m'offrir une " 
-		+ bien + " a " + prix + " sous");
-			perdreArgent(prix);
+			this.argent = 0;
 		}
 	}
-	
-	public void boire() {
-		parler("Mmmm, un bon verre de " + boissonFavorite + "! GLOUPS!");
+
+	public void gagnerArgent(int gain) {
+		this.argent += gain;
 	}
-	
+
+	public void acheter(String bien, int prix) {
+		int argentTemp = this.getArgent();
+		if (argentTemp < prix) {
+			this.parler("J'ai " + argentTemp + " sous en poche. Je ne peux meme pas m'offrir un " + bien + " a " + prix
+					+ " sous");
+		} else {
+			this.parler("J'ai " + argentTemp + " sous en poche. Je vais pouvoir m'offrir une " + bien + " a " + prix
+					+ " sous");
+			this.perdreArgent(prix);
+		}
+	}
+
+	public void boire() {
+		this.parler("Mmmm, un bon verre de " + this.boissonFavorite + "! GLOUPS!");
+	}
+
 }
