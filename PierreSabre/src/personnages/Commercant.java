@@ -8,6 +8,7 @@ public class Commercant extends Humain {
 
 	public void recevoir(int argent) {
 		this.parler(argent + " sous! Je te remercie genereux donateur!");
+		this.gagnerArgent(argent);
 	}
 
 	public int seFaireExtorquer() {
