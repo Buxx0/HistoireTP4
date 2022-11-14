@@ -4,6 +4,8 @@ public class Humain {
 	private String nom;
 	private String boissonFavorite;
 	private int argent;
+	private Humain[] memoire = new Humain[30];
+	private int nbConnaissances = 0;
 
 	public Humain(String nom, String boissonFavorite, int argent) {
 		this.nom = nom;
@@ -54,5 +56,43 @@ public class Humain {
 	public void boire() {
 		this.parler("Mmmm, un bon verre de " + this.boissonFavorite + "! GLOUPS!");
 	}
-
+	
+	public void repondre(Humain autreHumain) {
+		this.direBonjour();
+		this.memoriser(autreHumain);
+	}
+	
+	public void memoriser(Humain autreHumain) {
+		if (this.nbConnaissances < 30) {
+			this.memoire[this.nbConnaissances] = autreHumain;
+			this.nbConnaissances++;
+		} else {
+			for (int i = 0; i < 29; i++) {
+				this.memoire[i] = this.memoire[i + 1];
+			}
+			this.memoire[29] = autreHumain;
+		}
+	}
+	
+	public void faireConnaisanceAvec(Humain autreHumain) {
+		String specThis = this.getClass().getSimpleName().toLowerCase();
+		String specAutre = autreHumain.getClass().getSimpleName().toLowerCase();
+		if (specThis.equals(specAutre)) {
+			System.out.println("Le " + specThis + " " + this.getNom() + " rencontre un autre " + specAutre);
+		} else {
+			System.out.println("Le " + specThis + " " + this.getNom() + " rencontre le " + specAutre);
+		}
+		this.direBonjour();
+		autreHumain.repondre(this);
+		this.memoriser(autreHumain);
+	}
+	
+	public void listerConnaissance() {
+		String message = "Je connais beaucoup de monde, dont:";
+		for (int i = 0; i < this.nbConnaissances; i++) {
+			message += " " + this.memoire[i].getNom();
+			if (i != this.nbConnaissances - 1) message += ",";
+		} 
+		this.parler(message);
+	}
 }
