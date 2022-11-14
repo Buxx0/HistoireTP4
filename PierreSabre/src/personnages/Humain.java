@@ -99,4 +99,12 @@ public class Humain {
 	public String getBoissonFavorite() {
 		return boissonFavorite;
 	}
+
+	public int getNbConnaissances() {
+		return nbConnaissances;
+	}
+
+	public Humain[] getMemoire() {
+		return memoire;
+	}
 }
