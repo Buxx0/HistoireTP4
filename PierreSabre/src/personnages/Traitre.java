@@ -18,7 +18,7 @@ public class Traitre extends Samourai{
 	public void ranconner(Commercant commercant) {
 		if (this.niveauTraitrise < 3) {
 			int argentCommercant = commercant.getArgent();
-			int argentRanconner = argentCommercant*(2/10);
+			int argentRanconner = argentCommercant*2/10;
 			commercant.perdreArgent(argentRanconner);
 			this.gagnerArgent(argentRanconner);
 			this.niveauTraitrise++;
@@ -36,11 +36,18 @@ public class Traitre extends Samourai{
 		} else {
 			Random rand = new Random();
 			int ami_choisi = rand.nextInt(0, this.getNbConnaissances());
-			int don = this.getArgent() * (1/20);
+			int don = this.getArgent() * 1/20;
 			Humain ami = this.getMemoire()[ami_choisi];
 			String nomAmi = ami.getNom();
 			parler("Il faut absolument remonter ma cote de confience. Je vais faire ami ami avec " + nomAmi + ".");
 			//TODO finir methode.
+			parler("Bonjour l'ami! Je voudrais vous aider en vous donnant " + don + " sous.");
+			ami.gagnerArgent(don);
+			this.perdreArgent(don);
+			parler("Merci " + this.getNom() + " Vous etes quelqu'un de bien.");
+			if (this.niveauTraitrise > 1) {
+				this.niveauTraitrise--;
+			}
 		}
 		
 	}
