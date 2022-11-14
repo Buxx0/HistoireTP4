@@ -95,4 +95,8 @@ public class Humain {
 		} 
 		this.parler(message);
 	}
+
+	public String getBoissonFavorite() {
+		return boissonFavorite;
+	}
 }
